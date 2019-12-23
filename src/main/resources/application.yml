@@ -1,0 +1,75 @@
+server:
+    port: 8091 
+spring:
+  devtools:
+    restart:
+      enabled: true
+  jackson:
+    time-zone: GMT+8  
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    # 使用druid数据源  
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://127.0.0.1:3306/mysqldb?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    druid:
+      initial-size: 8
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runsMillis: 60000
+      min-evictable-idle-timeMillis: 300000
+      validation-query: select 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      use-global-data-source-stat: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: mygroup
+  redis:
+    host: 127.0.0.1
+    jedis:
+      pool:
+        #最大连接数据库连接数,设 0 为没有限制
+        max-active: 8
+        #最大等待连接中的数量,设 0 为没有限制
+        max-idle: 8
+        #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        max-wait: -1ms
+        #最小等待连接中的数量,设 0 为没有限制
+        min-idle: 0
+    password: root
+    port: 6379
+  session:
+      store-type: none
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  jms: 
+    pub-sub-domain: true
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #枚举类扫描位置
+  type-enums-package: com.example.demo.model.enums
+  type-aliases-package: com.example.demo.model
+  mapper-locations: classpath*:mybatis/*/*.xml
+  
+#自定义配置
+queue: testqueue
+topic: testtopic
+# 自定义shiro相关的参数
+shiro:
+  globalSessionTimeout: 3600000 # session生命周期 单位ms 暂设1小时

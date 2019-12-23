@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Testing websockets</title>
+</head>
+<body>
+	<div>
+		<textarea rows="3" cols="20" id="content"></textarea>
+		<br> <input type="submit" value="Start" onclick="start()" />
+	</div>
+	<div id="messages"></div>
+	<script type="text/javascript">
+		debugger
+	    if ('WebSocket' in window) {
+        // 浏览器支持Websocket
+			var webSocket2 = new WebSocket('ws://localhost:8091/websocket/1');
+		} else {
+			// 浏览器 Not support websocket
+		}
+		var webSocket = new WebSocket('ws://localhost:8091/websocket/1');
+	
+		webSocket.onerror = function(event) {
+			onError(event)
+		};
+	
+		webSocket.onopen = function(event) {
+			onOpen(event)
+		};
+	
+		webSocket.onmessage = function(event) {
+			onMessage(event)
+		};
+	
+		webSocket.onclose = function(event) {
+			onClose(event)
+		};
+	
+	
+		function onMessage(event) {
+			document.getElementById('messages').innerHTML += '<br />' + event.data;
+		}
+	
+		function onOpen(event) {
+			document.getElementById('messages').innerHTML = 'Connection established';
+		}
+	
+		function onError(event) {
+			console.log(event);
+			alert(event);
+		}
+	
+		function onClose(event) {
+			console.log(event);
+			alert(event);
+		}
+	
+		function start() {
+			var text = document.getElementById('content').value;
+			alert(text);
+			webSocket.send(text);
+		}
+	</script>
+</body>
+</html>

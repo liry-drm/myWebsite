@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>myPage</title>
+<link rel="stylesheet" type="text/css" media="screen"
+	href="styles/css/wordstyle.css"></link>
+<link rel="stylesheet" type="text/css" media="screen"
+	href="styles/css/mycss.css">
+<!-- <link rel="stylesheet" type="text/css" media="screen"  href="styles/css/style.css"></link> -->
+<style type="text/css">
+.from a {
+	display: block;
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/css/iview.css"iview.css">
+<script type="text/javascript" src="js/iview.min.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script src="js/jquery.lettering.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+	<div class="echartdiv">
+		<img id="echartbtn" title="点击隐藏" class="echartBtnOut"
+			src="styles/icon/display.png" onclick="Home.displayEchart();" />
+		<div id="echartdom" class="col-md-12  col-sm-12 col-xs-12"
+			style="height: 400px;"></div>
+	</div>
+	<canvas id="canvas"></canvas>
+	<!-- 每日一句部分 -->
+	<div class="oneword">
+		<h2 class="h2_title wordH2"></h2>
+		<p class="wordauthor">
+			<span style="margin-left: 70%;color: black;font-size: 16px;"></span>
+		</p>
+	</div>
+	<!-- 背景图按钮 -->
+	<div class="btnDiv">
+		<a id="prePic" title="上一张图" onclick="Home.switchPic(1);"> <img
+			class="arow_img img_transf" src="styles/icon/arow.png"></a> <a
+			class="_info" title="" onclick="Home.picinfo(this);"><img
+			class="infoImg" src="styles/icon/info.png"></a> <a id="nextPic"
+			title="下一张图" onclick="Home.switchPic();"> <img class="arow_img "
+			src="styles/icon/arow.png"></a>
+	</div>
+	<!-- 	<div class="tool">
+		<div><span></span>
+	       <input class="orange" type="radio" name="group4" checked><br/>
+	       <input class="orange" type="radio" name="group4"><br/>
+	       <input class="orange" type="radio" name="group4">
+       </div>
+    </div> -->
+	<div class="pfys">
+		<a title="自定义背景" onclick="$('#bgimg').trigger('click');"><img src="styles/icon/upload.png"></a>
+		<input type="file" id="bgimg" multiple="multiple" accept="image/*" style="display: none;" onchange="Home.uploadBg(this);">
+	</div>
+	<script type="text/javascript">
+		$(".indeterminate").prop("indeterminate", true);
+	</script>
+</body>
+</html>
