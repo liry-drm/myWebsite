@@ -16,6 +16,7 @@
 		document.getElementById('status').innerHTML="在线";
 		document.getElementById('status').style.color = 'green';
 		document.getElementById('status').title=document.getElementById('status').text;
+		$(".roomName").text("'" +document.getElementById('sid').value+"'" );
     }
     function onError(event) {
 		webSocket = null;
@@ -31,6 +32,7 @@
             += '<br />' + currentTime()+ document.getElementById('nickname').value+" 退出房间";
 		//getOnline(document.getElementById('sid').value);
 		$("#count").text("");
+		$(".roomName").text(document.getElementById('sid').value);
 		$("#users").html("");
     }
 	
