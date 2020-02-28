@@ -13,7 +13,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
-    url: jdbc:mysql://127.0.0.1:3306/mysqldb?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/myproject?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     username: root
     password: 123456
     druid:
@@ -49,7 +49,7 @@ spring:
         max-wait: -1ms
         #最小等待连接中的数量,设 0 为没有限制
         min-idle: 0
-    password: root
+    password: ''
     port: 6379
   session:
       store-type: none

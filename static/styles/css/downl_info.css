@@ -1,0 +1,14 @@
+.pic-c{width: 800px;height: auto;margin: 10px 0;}
+.snapShotWrap{width:750px;position:relative;margin:10px auto 10px; overflow:hidden;}
+#shotNext{top:0;right:0;border: none;padding: 0;margin: 0;border-radius:0;}
+#shotPrev{top:0;left:0;border: none;padding: 0;margin: 0; }
+.snap-shot-btn{position:absolute;width:30%;height:100%;opacity:.6;z-index:3;}
+.snap-shot-btn:hover{opacity: .9;}
+#shotNext i{background:url(../images/right-but.png) no-repeat;}
+#shotPrev i{background:url(../images/left-but.png) no-repeat;left:5px;}
+.snap-shot-btn i{width:50px;height:60px;top:45%;display: block;position: absolute;z-index: 99;right: 10px}
+.snapShotCont{width:750px;position:relative;overflow:hidden;z-index: 1;}
+.snopshot{position:absolute;overflow:hidden;zoom:1;text-align:center;}
+.snapShotCont img{position:relative;width:100%; height:100%;}
+.elementOverlay{z-index:1;position:absolute;top:0;left:0;background:#000;width:100%;height:100%;opacity:0.4;filter:alpha(opacity=40);}
+.elementOverlays{z-index:1;position:absolute;top:0;left:0;background:#000;width:100%;height:100%;opacity:0;filter:alpha(opacity=0);}

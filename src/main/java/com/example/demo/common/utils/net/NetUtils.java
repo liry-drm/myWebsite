@@ -2,7 +2,7 @@ package com.example.demo.common.utils.net;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.example.demo.common.utils.CommonUtil;
+import com.example.demo.common.utils.CommonUtils;
 
 public class NetUtils {
 	
@@ -16,7 +16,7 @@ public class NetUtils {
     public static boolean jsAjax(HttpServletRequest req){
         //判断是否为ajax请求，默认不是
         boolean isAjaxRequest = false;
-        if(!CommonUtil.isBlank(req.getHeader("x-requested-with")) && req.getHeader("x-requested-with").equals("XMLHttpRequest")){
+        if(!CommonUtils.isBlank(req.getHeader("x-requested-with")) && req.getHeader("x-requested-with").equals("XMLHttpRequest")){
             isAjaxRequest = true;
         }
         return isAjaxRequest;

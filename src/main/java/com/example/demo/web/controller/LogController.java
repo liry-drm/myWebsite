@@ -1,9 +1,5 @@
 package com.example.demo.web.controller;
 
-import com.example.demo.model.Log;
-import com.example.demo.service.impl.LogServiceImpl;
-import com.example.demo.model.ReturnResult;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,13 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.web.bind.annotation.RestController;
-import com.example.demo.web.controller.BaseController;
+import com.example.demo.model.Log;
+import com.example.demo.model.ReturnResult;
+import com.example.demo.service.impl.LogServiceImpl;
 
 /**
  *

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="styles/css/downl_info.css" rel="stylesheet">
+<title>Document</title>
+</head>
+<body>
+<!--图片轮播，后续将ul下的li改为动态，即实现图片动态轮播查看-->
+<div class="snapShotWrap" id="snapShotWrap">
+	<a id="shotNext" class="snap-shot-btn next" title="下一张" href="javascript:void(0);"><i></i></a>
+	<a id="shotPrev" class="snap-shot-btn prev" title="上一张" href="javascript:void(0);"><i></i></a>
+	<ul class="snapShotCont">
+		<li class="snopshot">
+			<img src="styles/images/img1.png"><span class="elementOverlays"></span>
+		</li>
+		<li class="snopshot">
+			<img src="styles/images/img2.png"><span class="elementOverlays"></span>
+		</li>
+		<li class="snopshot">
+			<img src="styles/images/img3.png"><span class="elementOverlays"></span>
+		</li>
+		<li class="snopshot">
+			<img src="styles/images/img4.png"><span class="elementOverlays"></span>
+		</li>
+	</ul>
+</div>
+<script src="js/jquery/jquery-1.8.3.min.js"></script>
+<script src="js/forPic/pic_show.js"></script>
+</body>
+</html>

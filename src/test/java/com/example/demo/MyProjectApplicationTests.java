@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.common.utils.CommonUtil;
+import com.example.demo.common.utils.CommonUtils;
 import com.example.demo.mapper.PersonMapper;
 import com.example.demo.model.Person;
 import com.example.demo.model.enums.EducationEnum;
@@ -48,7 +48,7 @@ public class MyProjectApplicationTests {
 		person.setCreate_by("KIKI");
 		person.setCreate_time(new Date());
 		for (int i = 0; i < 100; i++) {
-			person.setAge(CommonUtil.getRandom(23, 46));
+			person.setAge(CommonUtils.getRandom(23, 46));
 			personMapper.insert(person);
 		}
 		//System.out.println("添加：" + personMapper.insert(person) + "条");// Mybatis-Plus

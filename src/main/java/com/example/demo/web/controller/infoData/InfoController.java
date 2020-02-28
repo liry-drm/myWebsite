@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotBlank;
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.common.exception.ProjectException;
+import com.example.demo.common.utils.AddressUtil;
+import com.example.demo.common.utils.CommonUtils;
 import com.example.demo.common.utils.Constants;
 import com.example.demo.common.utils.StringUtil;
 import com.example.demo.common.utils.en_decode.EscapeUnescape;
 import com.example.demo.common.utils.net.HttpUtil;
+import com.example.demo.common.utils.net.NetUtils;
 import com.example.demo.model.ReturnResult;
 import com.example.demo.web.controller.websocket.GroupChatController;
 
@@ -388,15 +392,15 @@ public class InfoController {
 		String data="{\n" + 
 				"	\"list\": [{\n" + 
 				"		\"value\": \"妈妈\",\n" + 
-				"		\"name\": 40\n" + 
+				"		\"name\":" + CommonUtils.getRandom(100, 150) +"\n"+
 				"	},\n" + 
 				"	{\n" + 
 				"		\"value\": \"老婆\",\n" + 
-				"		\"name\": 140\n" + 
+				"		\"name\":"+CommonUtils.getRandom(80, 120) +"\n"+
 				"	},\n" + 
 				"	{\n" + 
 				"		\"value\": \"情人\",\n" + 
-				"		\"name\": 31\n" + 
+				"		\"name\":"+ CommonUtils.getRandom(100, 140) +"\n"+
 				"	}]\n" + 
 				"}";
 
@@ -411,4 +415,29 @@ public class InfoController {
 	public List<String> getOnline() throws ProjectException {
 		return GroupChatController.getOnline("");
 	}
+	@GetMapping("city")
+	public String getCityInfo(String ip,HttpServletRequest request) throws ProjectException {
+		if(StringUtil.isEmpty(ip)) {
+			ip = NetUtils.getIpAddr(request);
+		}
+		String info = AddressUtil.getCityInfo(ip);
+		if(StringUtil.isEmpty(info)){
+			info= "错误ip或未定位该IP";
+		};
+		return info;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

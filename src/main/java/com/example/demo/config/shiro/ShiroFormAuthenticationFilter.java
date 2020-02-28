@@ -15,13 +15,12 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         Subject subject = getSubject(request, response);
-        boolean authenticated = subject.isAuthenticated();
         if(subject.isAuthenticated() || subject.isRemembered()) {
             //如果登录了，直接进行之后的流程
             return true;
         }
         subject.logout();
-        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8"); 
         PrintWriter out = response.getWriter();
         out.println(new ReturnResult(ResultStatusCode.UNAUTHO_ERROR).toJson());
         out.flush();

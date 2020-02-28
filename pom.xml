@@ -144,11 +144,13 @@
 			<version>2.3.2</version>
 		</dependency> -->
 		<!-- 汉字转换为拼音 -->
-		<!-- <dependency>
-			<groupId>com.belerweb</groupId>
-			<artifactId>pinyin4j</artifactId>
-			<version>2.5.1</version>
-		</dependency> -->
+		 <!-- https://mvnrepository.com/artifact/com.github.stuxuhai/jpinyin -->
+		<dependency>
+		    <groupId>com.github.stuxuhai</groupId>
+		    <artifactId>jpinyin</artifactId>
+		    <version>1.1.8</version>
+		</dependency>
+
 		<!-- excel -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -207,6 +209,29 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
+		<!-- 爬取网站依赖jar包 -->
+		<!--jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.wanghaomiao</groupId>
+            <artifactId>JsoupXpath</artifactId>
+            <version>0.3.2</version>
+        </dependency>
+        <!-- http依赖 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <!--导入 httpcore 依赖-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
+		
 	</dependencies>
 	
 

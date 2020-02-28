@@ -21,7 +21,6 @@ import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.common.utils.AddressUtil;
 import com.example.demo.common.utils.DateUtils;
 import com.example.demo.common.utils.net.HttpContextUtil;
 import com.example.demo.common.utils.net.NetUtils;
@@ -103,6 +102,7 @@ public class LogAspect {
 		//operaLog.setLocation(AddressUtil.getCityInfo(operaLog.getIp()));
 	}
 
+	@SuppressWarnings("rawtypes")
 	private StringBuilder handleParams(StringBuilder params, Object[] args, List paramNames)
 			throws JsonProcessingException {
 		for (int i = 0; i < args.length; i++) {

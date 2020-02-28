@@ -27,10 +27,11 @@ import com.example.demo.service.IMenuService;
 import com.example.demo.service.IRoleService;
 import com.example.demo.service.IUserService;
 
+@SuppressWarnings("unused")
 public class ShiroRealm extends AuthorizingRealm {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ShiroRealm.class);
 
-	@Autowired 
+	@Autowired
 	private IUserService userService;
 	@Autowired
 	private IRoleService roleService;
@@ -55,10 +56,10 @@ public class ShiroRealm extends AuthorizingRealm {
 			User User = (User) principal;
 			List<Role> roles = roleService.getListByUserId(User.getUserId());
 			if (!CollectionUtils.isEmpty(roles)) {
-				//绑定角色集
+				// 绑定角色集
 				Set<String> collect = roles.stream().map(Role::getRoleName).collect(Collectors.toSet());
 				info.addRoles(collect);
-				//绑定权限集
+				// 绑定权限集
 				List<String> permslist = menuService.getPermsListByUserId(User.getUserId());
 				info.addStringPermissions(permslist);
 			}
@@ -86,7 +87,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		if (!(user.getStatus() == 1)) {
 			throw new DisabledAccountException(ResultStatusCode.USER_FROZEN.getMsg());
 		}
-		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(),getName());
+		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), getName());
 		return info;
 	}
 }

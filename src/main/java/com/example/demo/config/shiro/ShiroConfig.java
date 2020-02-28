@@ -40,7 +40,7 @@ public class ShiroConfig {
 		// 登录成功后要跳转的链接
 		// shiroFilterFactoryBean.setSuccessUrl("/auth/index");
 		// 未授权界面;
-		shiroFilterFactoryBean.setUnauthorizedUrl("common/unauth");
+		shiroFilterFactoryBean.setUnauthorizedUrl("/common/unauth");
 
 		// 自定义拦截器
 		Map<String, Filter> filtersMap = new LinkedHashMap<String, Filter>();
@@ -53,16 +53,18 @@ public class ShiroConfig {
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 		// 公共请求
 		filterChainDefinitionMap.put("/common/**", "anon");
+		// 注册用户
+		filterChainDefinitionMap.put("/register/**", "anon");
 		// 静态资源
 		filterChainDefinitionMap.put("/static/**", "anon");
 		// 登录方法
-		filterChainDefinitionMap.put("/admin/**", "anon"); // 表示可以匿名访问
+		filterChainDefinitionMap.put("/admin/login", "anon"); // 表示可以匿名访问
 		filterChainDefinitionMap.put("/info/**", "anon"); // 表示可以匿名访问
 		filterChainDefinitionMap.put("/websocket/**", "anon"); // 表示可以匿名访问
 		
 
 		// 此处需要添加一个kickout，上面添加的自定义拦截器才能生效
-		filterChainDefinitionMap.put("/admin/**", "kickout,authc");// 表示需要认证才可以访问
+		filterChainDefinitionMap.put("/admin/logout", "kickout,authc");// 表示需要认证才可以访问
 		filterChainDefinitionMap.put("/**", "authc");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;

@@ -21,7 +21,7 @@ public enum ResultStatusCode {
     LOGINED_IN(10001, "该用户已登录"),
     NOT_EXIST_BUSINESS(10002, "该商家不存在"),
     SHIRO_ERROR(10003, "登录异常"),
-    UNAUTHO_ERROR(10004, "您没有该权限"),
+    UNAUTHO_ERROR(10004, "您没有该权限,请登录"),
     BIND_PHONE(10010, "请绑定手机号"),
     UPLOAD_ERROR(20000, "上传文件异常"),
     INVALID_CAPTCHA(30005, "无效的验证码"),
