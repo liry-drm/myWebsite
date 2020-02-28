@@ -1,4 +1,3 @@
-本项目用于持续集成java主流技术
-# boot_shiro_redis_acMq_kafka_websocket
-持续集成项目，学习技术
-使用springboot2.1.3
+本项目搭建个人网站
+服务端使用java开发，满足个人网站的同时，持续集成java主流技术框架
+springboot2.1.3
