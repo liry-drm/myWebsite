@@ -18,7 +18,7 @@ import com.example.demo.service.IRoleService;
  *@since 2019-12-18
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 	
 	@Autowired

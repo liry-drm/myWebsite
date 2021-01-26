@@ -1,27 +1,20 @@
 package com.example.demo.common.utils.file;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -77,16 +70,19 @@ public class FileUtil {
 		CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest  
         .getFile("file");  
 		String realFileName = file.getOriginalFilename();  
-		if(saveName==null||"".equals(saveName))
-			saveName = multipartRequest.getParameter("name");  
-		if(saveName==null||"".equals(saveName))
-			saveName=realFileName;
+		if(saveName==null||"".equals(saveName)) {
+            saveName = multipartRequest.getParameter("name");
+        }  
+		if(saveName==null||"".equals(saveName)) {
+            saveName=realFileName;
+        }
 		String savePath="";
-		if(pathType==FileUtil.RELATIVELY_PATH)
-			savePath = request.getSession().getServletContext().getRealPath(  
-        "/")+path; 
-		else
-			savePath=path;
+		if(pathType==FileUtil.RELATIVELY_PATH) {
+            savePath = request.getSession().getServletContext().getRealPath(  
+"/")+path;
+        } else {
+            savePath=path;
+        }
 		File dirPath = new File(savePath);  
 		if (!dirPath.exists()) {  
 		    dirPath.mkdir();  
@@ -107,11 +103,12 @@ public class FileUtil {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();  
         String savePath="";
-        if(pathType==FileUtil.RELATIVELY_PATH)
-	        savePath = request.getSession().getServletContext().getRealPath(  
-	                "/")+path;
-        else
-        	savePath=path;
+        if(pathType==FileUtil.RELATIVELY_PATH) {
+            savePath = request.getSession().getServletContext().getRealPath(  
+                    "/")+path;
+        } else {
+            savePath=path;
+        }
   
         File file = new File(savePath);  
         if (!file.exists()) {  
@@ -137,7 +134,7 @@ public class FileUtil {
 	 * @return
 	 */
     public static List<String> loadFiles(HttpServletRequest request,String path) {  
-        List<String> files = new ArrayList<String>();  
+        List<String> files = new ArrayList<>();  
         String ctxPath = request.getSession().getServletContext().getRealPath(  
                 "/")+path;  
         File file = new File(ctxPath);  
@@ -168,12 +165,13 @@ public class FileUtil {
         BufferedInputStream bis = null;  
         BufferedOutputStream bos = null;  
         String path="";
-        if(pathType==FileUtil.RELATIVELY_PATH)
-        	path = request.getSession().getServletContext().getRealPath(  
-                "/")  
-                + url;  
-        else
-        	path=url;
+        if(pathType==FileUtil.RELATIVELY_PATH) {
+            path = request.getSession().getServletContext().getRealPath(  
+"/")  
++ url;
+        } else {
+            path=url;
+        }
         try {
         	String fileName = url.substring(url.lastIndexOf("/")+1, url.length());
             long fileLength = new File(path).length();  
@@ -201,10 +199,41 @@ public class FileUtil {
 				e1.printStackTrace();
 			}
         } finally {  
-            if (bis != null)  
-                bis.close();  
-            if (bos != null)  
-                bos.close();  
+            if (bis != null) {
+                bis.close();
+            }  
+            if (bos != null) {
+                bos.close();
+            }  
         }  
+    }
+
+    public static void main(String[] args) throws IOException {
+        
+    }
+    public static void readFileLines() throws IOException {
+        List<String> list = cn.hutool.core.io.FileUtil.readLines("D:\\dbo.sql", Charset.defaultCharset());
+        System.out.println(list.size());
+        Iterator<String> it = list.iterator();
+        boolean isDel = false;
+        while (it.hasNext()){
+            String o = it.next();
+            if (isDel){
+                it.remove();
+                isDel = false;
+                System.out.println(o);
+                continue;
+            }
+            if (o.contains("DROP TABLE")){
+                it.remove();
+                isDel = true;
+                System.out.println(o);
+            }
+        }
+        System.out.println(list.size());
+        File file = new File("D:\\dbo_back.sql");
+        file.createNewFile();
+        System.out.println(file.isFile());
+        cn.hutool.core.io.FileUtil.appendLines(list,file,Charset.defaultCharset());
     }
 }

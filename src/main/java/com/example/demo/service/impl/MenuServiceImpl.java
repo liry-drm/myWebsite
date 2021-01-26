@@ -18,7 +18,7 @@ import com.example.demo.service.IMenuService;
  *@since 2019-12-18
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IMenuService {
 
 	@Autowired

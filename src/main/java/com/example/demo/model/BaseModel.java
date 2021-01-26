@@ -41,7 +41,9 @@ public abstract class BaseModel implements Serializable{
 		Map<String, Object> map = new HashMap<String, Object>();
 		Field[] fields = this.getClass().getDeclaredFields();
 		for(Field field : fields){
-			if(Modifier.isStatic(field.getModifiers())) continue;
+			if(Modifier.isStatic(field.getModifiers())) {
+                continue;
+            }
 			try {
 				field.setAccessible(true);
 				map.put(field.getName(), field.get(this));

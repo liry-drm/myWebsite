@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  *@since ${date}
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 <#if kotlin>
 open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
 

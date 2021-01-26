@@ -118,17 +118,20 @@ public class Chinese2PinYin {
 		} catch (Exception e) {
 			return ch;
 		}
-		if (gb < FIRST_TABLE[0])
-			return ch;
+		if (gb < FIRST_TABLE[0]) {
+            return ch;
+        }
 		int i;
 		for (i = 0; i < 26; ++i) {
-			if (match(i, gb))
-				break;
+			if (match(i, gb)) {
+                break;
+            }
 		}
-		if (i >= 26)
-			return ch;
-		else
-			return (char) (65 + i);
+		if (i >= 26) {
+            return ch;
+        } else {
+            return (char) (65 + i);
+        }
 	}
 
 	public String getFirstPY(String src) {
@@ -207,10 +210,11 @@ public class Chinese2PinYin {
 		while (j < 26 && (FIRST_TABLE[j] == FIRST_TABLE[i])) {
 			++j;
 		}
-		if (j == 26)
-			return gb <= FIRST_TABLE[j];
-		else
-			return gb < FIRST_TABLE[j];
+		if (j == 26) {
+            return gb <= FIRST_TABLE[j];
+        } else {
+            return gb < FIRST_TABLE[j];
+        }
 	}
 
 	private int byte2Int(byte b) {

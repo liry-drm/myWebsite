@@ -226,7 +226,7 @@ public class DateUtils {
 	 * @return
 	 */
 	public static long dateToUnixTimestamp(boolean isSecend) {
-		long timestamp = new Date().getTime();
+		long timestamp = System.currentTimeMillis();
 		if (isSecend) {
 			timestamp = timestamp / 1000;
 		}

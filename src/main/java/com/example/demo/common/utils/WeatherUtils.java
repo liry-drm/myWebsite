@@ -56,8 +56,9 @@ public class WeatherUtils {
 			InputStreamReader isr = new InputStreamReader(gzin, "utf-8"); // 设置读取流的编码格式，自定义编码
 			BufferedReader reader = new BufferedReader(isr);
 			String line = null;
-			while ((line = reader.readLine()) != null)
-				sb.append(line + " ");
+			while ((line = reader.readLine()) != null) {
+                sb.append(line + " ");
+            }
 			reader.close();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -81,7 +82,9 @@ public class WeatherUtils {
 		// 响应json
 		JSONObject data = JSONObject.parseObject(weatherInfobyJson);
 		if (data.getInteger("status") != 1000) // 未获取
-			return;
+        {
+            return;
+        }
 
 		LinkedList<Weather> list = new LinkedList<>();
 		// 所有数据

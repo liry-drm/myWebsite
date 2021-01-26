@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.demo.model.enums.EducationEnum;
-import com.example.demo.model.enums.SexEnum;
+import com.example.demo.model.enums.Sex;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,7 +45,7 @@ public class Person extends BaseModel {
 	private EducationEnum education;
 	
 	@EnumValue
-	private SexEnum sex;
+	private Sex sex;
 	
 	@TableField(exist = true)
 	private String address;

@@ -3,6 +3,7 @@ package com.example.demo.model.enums;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 枚举学历类
@@ -11,18 +12,30 @@ import lombok.Getter;
  */
 @Getter
 public enum EducationEnum {
-	primary(1, "小学"), 
-	secondory(2, "中学"), 
-	high(3, "高中"),
-	university(4, "大学");
+    /**
+     * 小学学历
+     */
+	PRIMARY(1, "小学"),
+    /**
+     * 中学学历
+     */
+    SECONDARY(2, "中学"),
+    /**
+     * 高中学历
+     */
+	HIGH(3, "高中"),
+    /**
+     * 大学学历
+     */
+	UNIVERSITY(4, "大学");
 
-	EducationEnum(int code, String descp) {
+	EducationEnum(int code, String description) {
 		this.code = code;
-		this.descp = descp;
+		this.description = description;
 	}
 
 	@EnumValue
 	private final int code;
 	
-	private final String descp;
+	private final String description;
 }

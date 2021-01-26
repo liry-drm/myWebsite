@@ -9,6 +9,6 @@ import com.example.demo.model.Person;
 import com.example.demo.service.IMybatisPlusTestService;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class MybatisPlusTestServiceImpl extends ServiceImpl<PersonMapper, Person> implements IMybatisPlusTestService{
 }

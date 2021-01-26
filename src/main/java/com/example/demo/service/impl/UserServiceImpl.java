@@ -17,7 +17,7 @@ import com.example.demo.service.IUserService;
  *@since 2019-12-18
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
 	@Override

@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
  * service业务处理层
+ *
  * @author admin
- *@since 2019-12-19
+ * @since 2019-12-19
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> implements ILoginLogService {
 
 }

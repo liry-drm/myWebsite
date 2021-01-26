@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  *@since 2019-12-19
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class LogServiceImpl extends ServiceImpl<LogMapper, Log> implements ILogService {
 
 }

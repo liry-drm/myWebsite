@@ -41,8 +41,9 @@ public class ResizeImage {
 			WritableRaster raster = cm.createCompatibleWritableRaster(targetW, targetH);
 			boolean alphaPremultiplied = cm.isAlphaPremultiplied();
 			target = new BufferedImage(cm, raster, alphaPremultiplied, null);
-		} else
-			target = new BufferedImage(targetW, targetH, type);
+		} else {
+            target = new BufferedImage(targetW, targetH, type);
+        }
 		Graphics2D g = target.createGraphics();
 		// smoother than exlax:
 		g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -88,9 +89,9 @@ public class ResizeImage {
 	public static void saveImageAsFile(File fromFile, String imgType, String saveToFileStr, int width, int hight)
 			throws Exception {
 		BufferedImage srcImage;
-		if (imgType.equalsIgnoreCase("png")) {
+		if ("png".equalsIgnoreCase(imgType)) {
 			imgType = "PNG";
-		} else if (imgType.equalsIgnoreCase("bmp")) {
+		} else if ("bmp".equalsIgnoreCase(imgType)) {
 			imgType = "BMP";
 		} else {
 			imgType = "JPEG";

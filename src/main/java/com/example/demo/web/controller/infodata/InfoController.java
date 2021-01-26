@@ -1,4 +1,4 @@
-package com.example.demo.web.controller.infoData;
+package com.example.demo.web.controller.infodata;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ import com.example.demo.common.utils.AddressUtil;
 import com.example.demo.common.utils.CommonUtils;
 import com.example.demo.common.utils.Constants;
 import com.example.demo.common.utils.StringUtil;
-import com.example.demo.common.utils.en_decode.EscapeUnescape;
+import com.example.demo.common.utils.endecode.EscapeUnescape;
 import com.example.demo.common.utils.net.HttpUtil;
 import com.example.demo.common.utils.net.NetUtils;
 import com.example.demo.model.ReturnResult;

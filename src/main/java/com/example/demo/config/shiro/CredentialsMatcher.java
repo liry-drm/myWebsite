@@ -5,7 +5,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 
-import com.example.demo.common.utils.en_decode.Md5Util;
+import com.example.demo.common.utils.endecode.Md5Util;
  
 public class CredentialsMatcher extends SimpleCredentialsMatcher {
  
